@@ -1,0 +1,57 @@
+<Window x:Class="GymManagementSystem.Views.Dialogs.MemberDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Member Details" Height="480" Width="450"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource WindowBgBrush}">
+    <Border Padding="24">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <StackPanel Grid.Row="0" Margin="0,0,0,16">
+                <TextBlock x:Name="TxtDialogTitle" Text="Register Member" Style="{StaticResource HeaderTitleStyle}" FontSize="20"/>
+                <TextBlock Text="Enter member details and assign an optional trainer" Style="{StaticResource HeaderSubtitleStyle}" Margin="0,0,0,0"/>
+            </StackPanel>
+
+            <!-- Form Fields -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Full Name *" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBox x:Name="TxtFullName" Style="{StaticResource ModernTextBoxStyle}"/>
+
+                    <TextBlock Text="Gender *" Style="{StaticResource FormLabelStyle}"/>
+                    <ComboBox x:Name="CmbGender" Style="{StaticResource ModernComboBoxStyle}">
+                        <ComboBoxItem Content="Male" IsSelected="True"/>
+                        <ComboBoxItem Content="Female"/>
+                        <ComboBoxItem Content="Other"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Contact Number *" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBox x:Name="TxtContact" Style="{StaticResource ModernTextBoxStyle}"/>
+
+                    <TextBlock Text="Date of Birth" Style="{StaticResource FormLabelStyle}"/>
+                    <DatePicker x:Name="DpDob" Style="{StaticResource ModernDatePickerStyle}"/>
+
+                    <TextBlock Text="Address" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBox x:Name="TxtAddress" Style="{StaticResource ModernTextBoxStyle}"/>
+
+                    <TextBlock Text="Assigned Trainer" Style="{StaticResource FormLabelStyle}"/>
+                    <ComboBox x:Name="CmbTrainer" Style="{StaticResource ModernComboBoxStyle}" DisplayMemberPath="FullName" SelectedValuePath="TrainerId"/>
+
+                    <TextBlock x:Name="TxtError" Foreground="{StaticResource DangerBrush}" FontSize="12" Margin="0,10,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Action Buttons -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+                <Button Content="Cancel" Style="{StaticResource SecondaryButtonStyle}" Width="90" Click="BtnCancel_Click" Margin="0,0,10,0"/>
+                <Button x:Name="BtnSave" Content="Save Member" Style="{StaticResource PrimaryButtonStyle}" Width="120" Click="BtnSave_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

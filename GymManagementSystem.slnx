@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="GymManagementSystem.Tests/GymManagementSystem.Tests.csproj" />
+  <Project Path="GymManagementSystem/GymManagementSystem.csproj" />
+</Solution>

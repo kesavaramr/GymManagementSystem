@@ -1,0 +1,101 @@
+<UserControl x:Class="GymManagementSystem.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource WindowBgBrush}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="28">
+        <StackPanel>
+            <!-- Page Title -->
+            <TextBlock Text="Operations Dashboard" Style="{StaticResource HeaderTitleStyle}"/>
+            <TextBlock Text="Real-time operational summary, statistics, and quick gym actions" Style="{StaticResource HeaderSubtitleStyle}"/>
+
+            <!-- KPI Metric Cards Grid -->
+            <Grid Margin="0,0,0,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Total Members -->
+                <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}" Margin="0,0,10,0">
+                    <StackPanel>
+                        <TextBlock Text="TOTAL MEMBERS" Style="{StaticResource CardTitleStyle}"/>
+                        <TextBlock x:Name="TxtTotalMembers" Text="0" Style="{StaticResource CardValueStyle}" Foreground="{StaticResource PrimaryDarkBrush}"/>
+                        <TextBlock Text="Registered accounts" FontSize="11" Foreground="{StaticResource TextMutedBrush}" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Active Memberships -->
+                <Border Grid.Column="1" Style="{StaticResource CardBorderStyle}" Margin="5,0,5,0">
+                    <StackPanel>
+                        <TextBlock Text="ACTIVE PLANS" Style="{StaticResource CardTitleStyle}"/>
+                        <TextBlock x:Name="TxtActiveMemberships" Text="0" Style="{StaticResource CardValueStyle}" Foreground="{StaticResource SuccessBrush}"/>
+                        <TextBlock Text="Current active members" FontSize="11" Foreground="{StaticResource TextMutedBrush}" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Expired Memberships -->
+                <Border Grid.Column="2" Style="{StaticResource CardBorderStyle}" Margin="5,0,5,0">
+                    <StackPanel>
+                        <TextBlock Text="EXPIRED PLANS" Style="{StaticResource CardTitleStyle}"/>
+                        <TextBlock x:Name="TxtExpiredMemberships" Text="0" Style="{StaticResource CardValueStyle}" Foreground="{StaticResource DangerBrush}"/>
+                        <TextBlock Text="Needs renewal" FontSize="11" Foreground="{StaticResource TextMutedBrush}" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Today's Attendance -->
+                <Border Grid.Column="3" Style="{StaticResource CardBorderStyle}" Margin="5,0,5,0">
+                    <StackPanel>
+                        <TextBlock Text="TODAY'S CHECK-INS" Style="{StaticResource CardTitleStyle}"/>
+                        <TextBlock x:Name="TxtTodayAttendance" Text="0" Style="{StaticResource CardValueStyle}" Foreground="{StaticResource InfoBrush}"/>
+                        <TextBlock Text="Member visits today" FontSize="11" Foreground="{StaticResource TextMutedBrush}" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Total Revenue -->
+                <Border Grid.Column="4" Style="{StaticResource CardBorderStyle}" Margin="10,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="TOTAL REVENUE" Style="{StaticResource CardTitleStyle}"/>
+                        <TextBlock x:Name="TxtTotalRevenue" Text="$0.00" Style="{StaticResource CardValueStyle}" Foreground="{StaticResource PrimaryBrush}" FontSize="24"/>
+                        <TextBlock Text="Collected to date" FontSize="11" Foreground="{StaticResource TextMutedBrush}" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Quick Action Shortcuts -->
+            <Border Style="{StaticResource CardBorderStyle}" Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Quick Actions" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,12"/>
+                    <WrapPanel>
+                        <Button Content="+ Register Member" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,12,8" Click="BtnRegisterMember_Click"/>
+                        <Button Content="✓ Quick Check-In" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,12,8" Click="BtnQuickCheckIn_Click"/>
+                        <Button Content="💳 Record Payment" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,12,8" Click="BtnRecordPayment_Click"/>
+                        <Button Content="📋 Assign / Renew Plan" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,12,8" Click="BtnAssignPlan_Click"/>
+                        <Button Content="🔄 Refresh Data" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,12,8" Click="BtnRefresh_Click"/>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Today's Attendance Activity -->
+            <Border Style="{StaticResource CardBorderStyle}">
+                <StackPanel>
+                    <Grid Margin="0,0,0,12">
+                        <TextBlock Text="Today's Attendance Log" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                        <TextBlock x:Name="TxtAttendanceCount" Text="0 entries" HorizontalAlignment="Right" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    </Grid>
+
+                    <DataGrid x:Name="DgTodayAttendance" Style="{StaticResource ModernDataGridStyle}" MaxHeight="300">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Member ID" Binding="{Binding DisplayMemberId}" Width="110"/>
+                            <DataGridTextColumn Header="Member Name" Binding="{Binding MemberName}" Width="200"/>
+                            <DataGridTextColumn Header="Check-in Time" Binding="{Binding CheckInTime}" Width="140"/>
+                            <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,56 @@
+<UserControl x:Class="GymManagementSystem.Views.StaffView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource WindowBgBrush}">
+    <Grid Margin="28">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text="Staff Accounts &amp; System Administration" Style="{StaticResource HeaderTitleStyle}"/>
+                <TextBlock Text="Administrator tools for managing employee logins, permissions, and database backup" Style="{StaticResource HeaderSubtitleStyle}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Content="💾 Backup Database" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,10,0" Click="BtnBackup_Click"/>
+                <Button Content="+ Add Staff Account" Style="{StaticResource PrimaryButtonStyle}" Click="BtnAddStaff_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Access Banner -->
+        <Border Grid.Row="1" Background="#FEF3C7" BorderBrush="#FDE68A" BorderThickness="1" CornerRadius="6" Padding="14,10" Margin="0,0,0,16">
+            <TextBlock Text="🔒 Administrator Zone: Passwords are automatically hashed and salted (SHA-256). Staff accounts can only be modified by system administrators." FontSize="12" Foreground="#92400E"/>
+        </Border>
+
+        <!-- Staff DataGrid Card -->
+        <Border Grid.Row="2" Style="{StaticResource CardBorderStyle}" Padding="0">
+            <DataGrid x:Name="DgStaff" Style="{StaticResource ModernDataGridStyle}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Staff ID" Binding="{Binding StaffId}" Width="80"/>
+                    <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="200"/>
+                    <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="160"/>
+                    <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="110"/>
+                    <DataGridTextColumn Header="Contact" Binding="{Binding Contact}" Width="140"/>
+                    <DataGridTextColumn Header="Created Date" Binding="{Binding CreatedAt, StringFormat='{}{0:yyyy-MM-dd}'}" Width="120"/>
+                    <DataGridTemplateColumn Header="Actions" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Edit" Style="{StaticResource ActionGridButtonStyle}" Click="BtnEditStaff_Click"/>
+                                    <Button Content="Delete" Style="{StaticResource DangerButtonStyle}" Click="BtnDeleteStaff_Click"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <TextBlock x:Name="TxtFooterCount" Grid.Row="3" Text="Total 0 accounts" Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" Margin="4,8,0,0"/>
+    </Grid>
+</UserControl>
