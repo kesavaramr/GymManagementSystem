@@ -58,7 +58,7 @@
                 <Border Grid.Column="4" Style="{StaticResource CardBorderStyle}" Margin="10,0,0,0">
                     <StackPanel>
                         <TextBlock Text="TOTAL REVENUE" Style="{StaticResource CardTitleStyle}"/>
-                        <TextBlock x:Name="TxtTotalRevenue" Text="$0.00" Style="{StaticResource CardValueStyle}" Foreground="{StaticResource PrimaryBrush}" FontSize="24"/>
+                        <TextBlock x:Name="TxtTotalRevenue" Text="Rs 0.00" Style="{StaticResource CardValueStyle}" Foreground="{StaticResource PrimaryBrush}" FontSize="24"/>
                         <TextBlock Text="Collected to date" FontSize="11" Foreground="{StaticResource TextMutedBrush}" Margin="0,4,0,0"/>
                     </StackPanel>
                 </Border>

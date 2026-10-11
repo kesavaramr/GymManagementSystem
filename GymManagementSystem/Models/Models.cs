@@ -42,7 +42,7 @@ namespace GymManagementSystem.Models
         public decimal Price { get; set; }
         public string Description { get; set; } = string.Empty;
 
-        public string FormattedPrice => $"${Price:F2}";
+        public string FormattedPrice => $"LKR{Price:F2}";
         public string FormattedDuration => DurationInMonths == 1 ? "1 Month" : $"{DurationInMonths} Months";
     }
 
@@ -103,7 +103,7 @@ namespace GymManagementSystem.Models
 
         public string DisplayId => $"PAY-{PaymentId:D5}";
         public string DisplayMemberId => $"MEM-{MemberId:D4}";
-        public string FormattedAmount => $"${Amount:F2}";
+        public string FormattedAmount => $"LKR{Amount:F2}";
         public string FormattedDate => PaymentDate.ToString("yyyy-MM-dd");
     }
 

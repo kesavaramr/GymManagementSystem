@@ -26,7 +26,7 @@
                 <TextBlock Text="Duration (Months) *" Style="{StaticResource FormLabelStyle}"/>
                 <TextBox x:Name="TxtDuration" Style="{StaticResource ModernTextBoxStyle}" Text="1"/>
 
-                <TextBlock Text="Price ($) *" Style="{StaticResource FormLabelStyle}"/>
+                <TextBlock Text="Price *" Style="{StaticResource FormLabelStyle}"/>
                 <TextBox x:Name="TxtPrice" Style="{StaticResource ModernTextBoxStyle}" Text="45.00"/>
 
                 <TextBlock Text="Description" Style="{StaticResource FormLabelStyle}"/>

@@ -46,16 +46,16 @@ namespace GymManagementSystem.Views
 
             // 2. Financial Summary
             var financial = _reportService.GetFinancialReport(start, end);
-            TxtTotalPaid.Text = $"${financial.TotalPaid:N2}";
-            TxtTotalPending.Text = $"${financial.TotalPending:N2}";
-            TxtTotalOverdue.Text = $"${financial.TotalOverdue:N2}";
+            TxtTotalPaid.Text = $"LKR{financial.TotalPaid:N2}";
+            TxtTotalPending.Text = $"LKR{financial.TotalPending:N2}";
+            TxtTotalOverdue.Text = $"LKR{financial.TotalOverdue:N2}";
 
             if (financial.ByPaymentMethod.Count > 0)
             {
                 var sb = new StringBuilder();
                 foreach (var kvp in financial.ByPaymentMethod)
                 {
-                    sb.AppendLine($"• {kvp.Key}: ${kvp.Value:N2}");
+                    sb.AppendLine($"• {kvp.Key}: LKR{kvp.Value:N2}");
                 }
                 TxtPaymentBreakdown.Text = sb.ToString().TrimEnd();
             }

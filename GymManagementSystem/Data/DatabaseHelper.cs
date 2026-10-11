@@ -143,8 +143,8 @@ namespace GymManagementSystem.Data
                 insertStaff.CommandText = @"
                     INSERT INTO staff (name, username, password_hash, role, contact, created_at)
                     VALUES 
-                    (@adminName, 'admin', @adminPass, 'Admin', '555-0100', @today),
-                    (@staffName, 'staff', @staffPass, 'Staff', '555-0200', @today);
+                    (@adminName, 'admin', @adminPass, 'Admin', '0752147143', @today),
+                    (@staffName, 'staff', @staffPass, 'Staff', '0724147143', @today);
                 ";
                 insertStaff.Parameters.AddWithValue("@adminName", "System Administrator");
                 insertStaff.Parameters.AddWithValue("@adminPass", AuthService.HashPassword("admin123"));

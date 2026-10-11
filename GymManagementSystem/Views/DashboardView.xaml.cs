@@ -31,7 +31,7 @@ namespace GymManagementSystem.Views
             if (TxtActiveMemberships != null) TxtActiveMemberships.Text = stats.ActiveMemberships.ToString();
             if (TxtExpiredMemberships != null) TxtExpiredMemberships.Text = stats.ExpiredMemberships.ToString();
             if (TxtTodayAttendance != null) TxtTodayAttendance.Text = stats.TodayAttendance.ToString();
-            if (TxtTotalRevenue != null) TxtTotalRevenue.Text = $"${stats.TotalRevenue:N2}";
+            if (TxtTotalRevenue != null) TxtTotalRevenue.Text = $"LKR{stats.TotalRevenue:N2}";
 
             var todayLogs = _attRepo.GetTodayAttendance();
             DgTodayAttendance.ItemsSource = todayLogs;
